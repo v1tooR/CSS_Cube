@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cubo :D</title>
+    <link href="./style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="icon" href="./cube.png">
+</head>
+<body>
+    <div class="scene">
+        <div class="cube">
+          <div class="cube__face cube__face--front">Frente</div>
+          <div class="cube__face cube__face--back">Traseira</div>
+          <div class="cube__face cube__face--right">Direita</div>
+          <div class="cube__face cube__face--left">Esquerda</div>
+          <div class="cube__face cube__face--top">Cima</div>
+          <div class="cube__face cube__face--bottom">Baixo</div>
+        </div>
+      </div>
+      <p class="radio-group">
+
+        <label class="rad-label">
+          <input type="radio" class="rad-input" name="rotate-cube-side" value="front" checked /> Frente
+        </label>
+
+        <label class="rad-label">
+          <input type="radio" class="rad-input" name="rotate-cube-side" value="back" /> Traseira
+        </label>
+
+        <label class="rad-label">
+          <input type="radio" class="rad-input" name="rotate-cube-side" value="right" /> Direita
+        </label>
+        
+        <label class="rad-label">
+          <input type="radio" class="rad-input" name="rotate-cube-side" value="left" /> Esquerda
+        </label>
+
+        <label class="rad-label">
+          <input type="radio" class="rad-input" name="rotate-cube-side" value="top" /> Cima
+        </label>
+
+        <label class="rad-label">
+          <input type="radio" class="rad-input" name="rotate-cube-side" value="bottom" /> Baixo
+        </label>
+      </p>
+
+      <script>
+        var cube = document.querySelector('.cube');
+        var radioGroup = document.querySelector('.radio-group');
+        var currentClass = '';
+
+        function changeSide() {
+        var checkedRadio = radioGroup.querySelector(':checked');
+        var showClass = 'show-' + checkedRadio.value;
+        if ( currentClass ) {
+            cube.classList.remove( currentClass );
+        }
+        cube.classList.add( showClass );
+        currentClass = showClass;
+        }
+       
+        changeSide();
+
+        radioGroup.addEventListener( 'change', changeSide );
+    </script>
+</body>
+</html>

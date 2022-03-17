@@ -1,0 +1,178 @@
+* { 
+    box-sizing: border-box;
+    font-family: 'Press Start 2P', cursive;
+    align-items: center;
+    background-color: rgb(27, 27, 27);
+    color: #CCC; 
+}
+
+body { 
+    display: flex;
+    place-content: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box; 
+}
+
+.scene {
+  width: 200px;
+  height: 200px;
+  margin: 80px;
+  perspective: 400px;
+}
+
+.cube {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: translateZ(-100px);
+  transition: transform 1s;
+}
+
+.cube.show-front  { 
+    transform: translateZ(-100px) rotateY(   0deg); 
+}
+.cube.show-right  { 
+    transform: translateZ(-100px) rotateY( -90deg); 
+}
+.cube.show-back   { 
+    transform: translateZ(-100px) rotateY(-180deg); 
+}
+.cube.show-left   { 
+    transform: translateZ(-100px) rotateY(  90deg); 
+}
+.cube.show-top    { 
+    transform: translateZ(-100px) rotateX( -90deg); 
+}
+.cube.show-bottom { 
+    transform: translateZ(-100px) rotateX(  90deg); 
+}
+
+.cube__face {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border: 2px solid black;
+  line-height: 200px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+}
+
+.cube__face--front  { 
+    background: rgba(202, 20, 20, 0.7); 
+}
+.cube__face--right  { 
+    background: rgba(255, 226, 62, 0.856); 
+}
+.cube__face--back   { 
+    background: hsla(93, 98%, 55%, 0.7); 
+}
+.cube__face--left   { 
+    background: hsla(300, 88%, 61%, 0.7); 
+}
+.cube__face--top    { 
+    background: hsla(209, 77%, 41%, 0.7); 
+}
+.cube__face--bottom { 
+    background: hsla(300, 64%, 23%, 0.7); 
+}
+
+.cube__face--front  { 
+    transform: rotateY(  0deg) translateZ(100px); 
+}
+.cube__face--right  { 
+    transform: rotateY( 90deg) translateZ(100px); 
+}
+.cube__face--back   { 
+    transform: rotateY(180deg) translateZ(100px); 
+}
+.cube__face--left   { 
+    transform: rotateY(-90deg) translateZ(100px); 
+}
+.cube__face--top    { 
+    transform: rotateX( 90deg) translateZ(100px); 
+}
+.cube__face--bottom { 
+    transform: rotateX(-90deg) translateZ(100px); 
+}
+
+.rad-label {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    border-radius: 100px;
+    padding: 14px 16px;
+    margin: 10px 0;
+  
+    cursor: pointer;
+    transition: .3s;
+  }
+  
+  .rad-label:hover,
+  .rad-label:focus-within {
+    background: hsla(0, 0%, 80%, .14);
+  }
+  
+  .rad-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    z-index: -1;
+  }
+  
+  .rad-design {
+    width: 22px;
+    height: 22px;
+    border-radius: 100px;
+  
+    background: linear-gradient(to right bottom, hsl(154, 97%, 62%), hsl(225, 97%, 62%));
+    position: relative;
+  }
+  
+  .rad-design::before {
+    content: '';
+  
+    display: inline-block;
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+  
+    background: hsl(0, 0%, 90%);
+    transform: scale(1.1);
+    transition: .3s;
+  }
+  
+  .rad-input:checked+.rad-design::before {
+    transform: scale(0);
+  }
+  
+  .rad-text {
+    color: hsl(0, 0%, 60%);
+    margin-left: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 900;
+  
+    transition: .3s;
+  }
+  
+  .rad-input:checked~.rad-text {
+    color: hsl(0, 0%, 40%);
+  }
+  
+  @media screen and (max-width: 500px){
+    body{
+        display:grid;
+    }
+    input .rad-input{
+        text-align: center;
+    }
+  }
